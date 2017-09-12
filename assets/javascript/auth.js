@@ -60,6 +60,8 @@ $(function(){
       // Clear input fields of sign-in form
         $('#email-login').val("");
         $('#password-login').val("");
+
+        $('.nav-collapse').collapse('hide');
       });
 
     // Cancel Button on Login Screen
@@ -129,6 +131,8 @@ $(function(){
                 golfdb.ref('playerCount').set({
                   playerId:playerId
                 });
+
+                $('.nav-collapse').collapse('hide');
         })
 
         // If error happens on account creation and returns and updated Alert
@@ -175,6 +179,7 @@ $(function(){
         $('#scorecard').removeClass('hide');
         $('#leaderboard').removeClass('hide');
         $('#player').removeClass('hide');
+        $('#chat').removeClass('hide');
         // $("#autocomplete").focus();
         
         $('#loginModal').modal('hide');
@@ -193,6 +198,7 @@ $(function(){
         $('#leaderboard').addClass('hide');
         $('#games').addClass('hide');
         $('#player').addClass('hide');
+        $('#chat').addClass('hide');
       }
   
     // Add a realtime listener

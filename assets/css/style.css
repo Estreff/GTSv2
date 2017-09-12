@@ -25,9 +25,15 @@ nav {
 	margin-bottom: 0px;
 }
 
+.navbar ul li a{
+	font-size: 16px;
+	padding: 20px 15px;
+}
+
 .navbar-brand {
-  margin-right: 20px;
-  padding-top: 10px;
+	font-size: 24px;
+  margin: 0px 10px;
+  padding-top: 18px;
 }
 
 #createUser input {
@@ -62,7 +68,7 @@ nav {
 	background-color: #5cb85c;
 	border: 2px solid #5cb85c;
 	border-radius: 5px;
-	margin: 20px;
+	margin: 20px 15px;
 	height: 62px;
 
 	display: flex;              /* establish flex container */
@@ -215,7 +221,7 @@ tbody td:last-child, thead th:last-child {
 .sidebar {
 /*	border: 2px solid #5d85b1;
 	border-radius: 5px;*/
-	min-height: 784px;
+	min-height: 420px;
 }
 
 .panel-heading {
@@ -258,15 +264,15 @@ tbody td:last-child, thead th:last-child {
 /*	border: 2px solid #5d85b1;
 	border-radius: 5px;*/
 	margin: 20px;
-	height: 380px;
+	min-height: 150px;
 }
 
 #chatBody {
-	max-height: 474px;
+	max-height: 274px;
 }
 
 #messages {
-	max-height: 440px;
+	max-height: 240px;
 	overflow-y: auto;
 }
 
@@ -288,7 +294,7 @@ tbody td:last-child, thead th:last-child {
 }
 
 .modal-header {
-	background-color: #5d85b1;
+	background-color: #5cb85c;
 	border-top-right-radius: 5px;
 	border-top-left-radius: 5px;
 }
@@ -493,6 +499,10 @@ tbody td:last-child, thead th:last-child {
 	padding-right:10px;
 }
 
+div b {
+	color: darkgray;
+}
+
 @media only screen and (min-width : 320px) {
 	table.scroll tbody td,
 	table.scroll thead th {
@@ -512,11 +522,18 @@ tbody td:last-child, thead th:last-child {
 	}
 
 	.mainContent {
-		min-height: 512px;
+		min-height: 420px;
 	}
 
 	.topicLeft {
-		min-height:512px;
+		min-height:420;
+	}
+
+	.topicRight {
+		min-height:420;	
+	}
+	.sidebar {
+		min-height:420;	
 	}
 }
 

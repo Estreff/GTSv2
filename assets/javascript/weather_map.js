@@ -189,7 +189,7 @@ $('#wxCancel').on("click",function(){
             };
 
             infoWindow.setPosition(pos);
-            infoWindow.setContent('You are Here');
+            infoWindow.setContent('<b>You are Here</b>');
             infoWindow.open(map);
             map.setCenter(pos);
             map.setZoom(15);
