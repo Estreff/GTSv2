@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>GTS</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="assets/images/gts32.gif" type="image/x-icon" />
+	<!-- BootStrap  -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- Bootswatch -->
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css">	
+	<!-- Awesome Fonts -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<!-- CSS -->
+	<link rel="stylesheet" href="assets/css/style.css">
+	<!-- Firebase -->
+  	<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+	<!-- Firebase UI-->
+	<script src="https://cdn.firebase.com/libs/firebaseui/2.3.0/firebaseui.js"></script>
+	<!-- Firebase CSS -->
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.3.0/firebaseui.css" />
+</head>
+
+<body>
+	<div class="wrapper">
+	<!-- <div class="container-fluid"> -->
+		<nav class="navbar navbar-default">
+		  	<div class="container-fluid">
+
+			    <div class="navbar-header">
+			      	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+			        	<span class="sr-only">Toggle navigation</span>
+			        	<span class="fa fa-bars fa-lg"></span> 
+			      	</button>
+			      	<a class="navbar-brand" href="#">
+			      		<span><img src="assets/images/gts32.gif"></span>
+			      		 Golf Tourney Scoring
+			      	</a>
+			    </div>
+			  	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			      	<ul class="nav navbar-nav">
+			      		<li class="" id=home><a href="index.html">Home</a></li>
+			        	<li class="active" id="games"><a href="games.html">Games</a></li>
+			        	<li class="" id = scorecard><a href="scorecard.html">Scorecard</a></li>
+			        	<li class="" id="leaderboard"><a href="leaderboard.html">Leaderboard</a></li>
+			     	</ul>
+			        <ul class="nav navbar-nav navbar-right">
+			      		<li><a href="#" id="player"></a></li>
+			      		<li class="hide" id="signup-nav" data-toggle="modal" data-target="#createModal"><a href="#"><span class="fa fa-user-plus"></span> Sign Up</a></li>
+			            <li class="hide" id="login-nav" data-toggle="modal" data-target="#loginModal"><a href="#"><span class="fa fa-sign-in"></span> Login</a></li>
+			            <li id="logout-nav" class="" data-toggle="modal" data-target="#logoutModal"><a href="#"><span class="fa fa-sign-out"></span> Logout</a></li>
+					</ul>
+		    	</div>
+		  	</div>
+		</nav>
+		<div class="content container-fluid">
+			<div class="row">
+				<div class="topicLeft col-lg-9">
+					<div class="mainContent">
+						<div class="well well-lg well-primary" id="localTitle">
+							<h2 class="text-center"> Tournaments</h2>
+						</div>
+						<div class="col-md-3">
+							<form role="form" class="form-group">
+
+								<label for="Search">Tournament Name:</label>
+								<input type="text" class="form-control" id="gameName-input" placeholder="" required>
+
+								<label for="Search">Course Name:</label>
+								<input type="text" class="form-control" id="courseName-input" placeholder="" required>
+
+								<button type="submit" class="btn btn-danger" id="createGame">Create Game</button>
+
+							</form>
+						</div>
+						<div class="col-md-9">
+							<table class="scroll table table-striped text-center">
+								<thead>
+				  					<tr>
+										<th>Tournament Name</th>
+										<th>Course Name</th>
+										<th class="hidden-xs">Created by</th>
+										<th>Join</th>
+										<th class="visible-sm hidden-xs">Remove</th>
+									</tr>
+								</thead>
+								<tbody id="openGames">
+				
+				  				</tbody>
+
+				  			</table>
+						</div>
+					</div>
+				</div>
+				<div class="topicRight col-lg-3">
+					<div class=sidebar>	
+						<div id = "weather">
+							<div class="panel panel-primary">
+								<div class="panel-heading" id="weatherTitle">
+									<h4 class = "col-md-6 col-xs-6 text-left" id = "city"></h4>			
+									<h4 class = "col-md-6 col-xs-6 text-right" id = "temperature"></h4>	
+								</div>
+								<div class="panel-body" id="weatherDetail">
+									<div class = "col-md-6 col-xs-6 text-left">
+										<h3 id = "weather-description"></h3>
+										<p id = "weather-icon"></p>
+									</div>
+									<div class = "col-md-6 col-xs-6 text-right">
+										<h3 id = "windspeed"></h3>
+										<p id = "wind-direction"></p>
+									</div>
+								</div>
+							</div>								
+						</div>
+						<div id="chat">
+							<div class="panel panel-primary" id = "chatBox">
+							  	<div class="panel-heading" id="chatHeading">
+							  		<h4><i id = "symbol" class = "fa fa-comments fa-lg"></i> Player Chat</h4>
+								</div>
+								<div class="panel-body" id="chatBody"> 
+	
+									<div id="messages">	</div>
+									
+		  						</div>
+		  						<div class="input-group col-md-12 col-sm-12 " id="buttonInput">		
+									<input type="text" class="form-control" id = "chatMessage" placeholder="Enter Message">
+									<span class="input-group-btn">
+    									<button class="btn btn-warning" id="messageSubmit" type="button"> Send </button>
+  									</span>
+								</div>
+		  					</div>
+		  				</div>						
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Logout Modal -->
+		<div class="modal" id="logoutModal">
+		  	<div class="modal-dialog" role="document">
+		    	<div class="modal-content">
+		      		<div class="modal-header">
+		        		<h5 class="modal-title"><span class="fa fa-sign-out"></span> Logout</h5>
+		      		</div>
+		      		<div class="modal-body">
+		      			<p>Do you really want to Logout?</p>
+	      			</div>
+		      		<div class="modal-footer">
+		        		<button type="submit" class="btn btn-primary" id="logout">Logout</button>
+		        		<button type="button" class="btn btn-danger" data-dismiss="modal" id="logoutCancel">Cancel</button>
+		    		</div>
+		    	</div>
+		  	</div>
+		</div>
+
+
+				<!-- WX alert modal -->
+		<div class="modal" id="weather-modal">
+		  	<div class="modal-dialog" role="document">
+		    	<div class="modal-content">
+		      		<div class="modal-header">
+		        		<h1 class="modal-title"><strong>WEATHER ALERT!</strong></h1>
+		      		</div>
+		      		<div class="modal-body">
+		      			<p><strong>Seek Shelter Immediately!</strong></p>
+	      			</div>
+		      		<div class="modal-footer">
+						<button type="button" class="btn btn-danger" data-dismiss="modal" id="wxCancel">Cancel</button>
+		    		</div>
+		    	</div>
+		  	</div>
+		</div>
+
+		<footer class="navbar navbar-default">
+				<ul class="nav navbar-nav col-lg-12">
+					<li class= "col-lg-12" id = "copyright"><h5>&copy; Golf Tourney Scoring Inc.</h5></li>
+				</ul>
+    </footer>
+  
+	</div>
+	<!-- Firebase -->
+	<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+	<!-- jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!-- Bootstrap jQuery -->
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  	<!-- jQueryRotate.js  for rotating the weather icon-->
+    <script src="assets/javascript/jQueryRotate.js"></script>
+  	<!-- Local Javascript -->
+  	<script type="text/javascript" src="assets/javascript/auth.js"></script>
+  	<!-- Weather Local Javascript -->
+  	<script type="text/javascript" src="assets/javascript/weather_map.js"></script>
+</body>

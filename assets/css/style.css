@@ -1,0 +1,552 @@
+body {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+.wrapper {
+ min-height: 93vh;
+ overflow: hidden;
+ display: block;
+ position: relative;
+}
+
+.content {
+	width: 100%;
+	min-height: 922px;
+}
+
+.navbar {
+	margin-bottom: 0px;
+}
+
+.navbar-brand {
+  margin-right: 20px;
+  padding-top: 10px;
+}
+
+#createUser input {
+	margin-bottom: 5px;
+}
+
+#loginError {
+	font-weight: bold;
+}
+
+#createError {
+	font-weight: bold;
+}
+
+#player {
+	font-weight: bold;
+}
+
+.row > div {
+	padding: 0px;
+/*	min-height: 798px;*/
+
+}
+
+.mainContent {
+/*	border: 2px solid #5d85b1;
+	border-radius: 5px;*/
+	min-height: 798px;
+}
+
+#localTitle {
+	background-color: #446e9b;
+	border: 2px solid #446e9b;
+	border-radius: 5px;
+	margin: 20px;
+	height: 62px;
+
+	display: flex;              /* establish flex container */
+    flex-direction: column;     /* stack flex items vertically */
+    justify-content: center;    /* center items vertically, in this case */
+    align-items: center;
+}
+
+
+#localTitle h2 {
+	/*line-height: 0px;*/
+	color: #ffffff;
+	font-size: 2em;
+	font-weight: bold;
+	line-height: 20px;
+	margin: 4px;
+}
+
+#localHeatMap {
+	border: 2px solid #5d85b1;
+	border-radius: 5px;
+	margin: 20px;
+	min-height: 788px;
+	margin-bottom: 0px
+}
+
+#scorecardPage {
+/*	border: 2px solid #5d85b1;
+	border-radius: 5px;*/	
+	/*margin: 20px;*/
+	min-height: 490px;
+}
+
+.scorecardLayout tr th {
+	width:48px;
+}
+
+
+.scorecardBlank tr td {
+	height:70px;
+	color: #446e9b;
+	font-family: 'Reenie Beanie', cursive;
+	font-size: 36px;
+	padding: 4px;
+}
+
+.results>tbody>tr>td {
+	padding:2px;
+}
+
+#frontNineScores {
+	margin-bottom: 20px;
+}
+
+#backNine tr th {
+	padding-left:2px;
+	padding-right:2px;
+}
+
+#scoreOut {
+	background-color: green;
+	padding: 4px;
+	width: 60px;
+}
+
+#scoreIn {
+	background-color: green;
+	padding: 14px 14px 4px 14px;
+	width: 60px;
+}
+
+#scoreardTotal {
+	/*float: letter-spacing: ;*/
+}
+
+/*Creating Game Management Scrollable Table*/
+
+table.scroll {
+    width: 100%;
+    border-spacing: 0;
+}
+
+table.scroll th,
+table.scroll td,
+table.scroll tr,
+table.scroll thead,
+table.scroll tbody { display: block; }
+
+table.scroll thead tr {
+    /* fallback */
+    width: 97%;
+    /* minus scroll bar width */
+    width: calc(100%-16px);
+}
+
+table.scroll tr:after {
+    content: ' ';
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+
+table.scroll tbody {
+    max-height: 328px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+table.scroll tbody td,
+table.scroll thead th {
+    width: 20%;
+    float: left;
+}
+
+thead {
+	background-color: #446e9b;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px; 
+}
+
+thead tr th { 
+	color:#ffffff;
+    min-height: 60px;
+    line-height: 30px;
+    text-align: center;
+}
+
+
+tbody td:last-child, thead th:last-child {
+    border-right: none !important;
+}
+
+#openGames {
+	color: #446e9b;
+	border: 1px solid #446e9b;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	text-align: center;
+	min-height: 62px;
+	max-height: 328px;
+}
+
+.sidebarHome {
+/*	border: 2px solid #5d85b1;
+	border-radius: 5px;*/
+	min-height: 412px;
+
+}
+
+.sidebar {
+/*	border: 2px solid #5d85b1;
+	border-radius: 5px;*/
+	min-height: 784px;
+}
+
+.panel-heading {
+	/*padding-top:0px;*/
+	min-height: 42px;
+}
+
+.panel-heading h4 {
+	color:white;
+	font-size:1em;
+	font-weight: bold;
+	margin: 0px;
+}
+
+.panel > #weatherTitle {
+	padding-top:0px;
+	min-height: 42px;
+}
+
+#weather {
+/*	border: 2px solid #5d85b1;
+	border-radius: 5px;*/
+	margin: 20px;
+	height: 200px;
+}
+
+#weatherTitle h4 {
+	color:white;
+	font-size:1em;
+	font-weight: bold;
+	padding:10px 0 0 0;
+	margin: 0px;
+}
+
+#weatherDetail {
+	min-height: 144px;
+}
+
+#chat {
+/*	border: 2px solid #5d85b1;
+	border-radius: 5px;*/
+	margin: 20px;
+	height: 380px;
+}
+
+#chatBody {
+	max-height: 474px;
+}
+
+#messages {
+	max-height: 440px;
+	overflow-y: auto;
+}
+
+
+#otherInfo {
+/*	border: 2px solid #5d85b1;
+	border-radius: 5px;*/
+	margin: 20px;
+	min-height: 188px;
+	padding: 0;
+	color: #446e9b;
+}
+
+#moreInfo {
+/*	border: 2px solid #5d85b1;
+	border-radius: 5px;*/
+	margin: 20px;
+	min-height: 188px;
+}
+
+.modal-header {
+	background-color: #5d85b1;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+}
+
+.modal-header  h5{
+	color: white;
+	font-size: 24px;
+	font-weight: bold;
+}
+
+footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	margin-bottom: 0;
+}
+
+footer .navbar-nav {
+	height: 40px;
+	margin:0;
+}
+
+#copyright a{
+	padding: 0px;
+}
+
+#copyright h5{
+	text-align: center;
+	line-height: 40px;
+}
+
+
+#createGame {
+	margin-top: 10px;
+}
+
+#wind-direction {
+	float: right;
+}
+
+.card-body input {
+
+}
+
+#scoreEntry {
+	/*padding: 0px;*/
+}
+
+
+#scoreCard {
+	/*padding: 0px;*/
+} 
+#scoreCard.panel.panel-body {
+	min-height: 493px;
+}
+
+#scorecardView {
+    margin: auto;
+    margin-top: 20pt;
+}
+
+#scorecardTotal {
+	padding-left: 0px;
+}
+
+#totalScoreTitle {
+	background-color: #446e9b;
+	border:2px solid #446e9b;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	color: #ffffff;
+	font-size: 18pt;
+	float: left;	
+	height:60px;	
+	/*margin-left: 0px;*/
+	padding: 12px 0px 12px 10px;
+	
+}
+
+#totalScoreTitle h4{
+	line-height: :70px;
+}
+
+#totalScore {
+	border:2px solid #446e9b;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	color: #446e9b;
+	font-family: 'Reenie Beanie', cursive;
+	font-size: 48px;
+	height:60px;
+	line-height: :70px;
+	padding: 0 10px 0 10px;
+}
+
+#exitGame {
+	height: 60px;
+	margin-top: 10px;
+	padding:10px;
+}
+
+#score {
+	color: #446e9b;
+	height: 345px;
+	width: 100%;
+	font-family: 'Reenie Beanie', cursive;
+	font-size: 20em;
+	text-align: center;
+}
+
+.tourneyInfo {
+	color: #446e9b;
+	font-family: 'Reenie Beanie', cursive;
+	font-size: 2em;
+}
+
+/*Creating Scrollable Table*/
+
+table.scroll {
+    width: 100%;
+    border-spacing: 0;
+}
+
+table.scrollLeader th,
+table.scrollLeader td,
+table.scrollLeader tr,
+table.scrollLeader thead,
+table.scrollLeader tbody { display: block; }
+
+table.scrollLeader thead tr {
+    /* fallback */
+    width: 97%;
+    /* minus scroll bar width */
+    width: calc(100%-16px);
+}
+
+table.scrollLeader tr:after {
+    content: ' ';
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+
+table.scrollLeader tbody {
+    max-height: 328px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+table.scrollLeader tbody td,
+table.scrollLeader thead th {
+    width: 33%;
+    float: left;
+}
+
+thead {
+	background-color: #446e9b;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px; 
+}
+
+thead tr th { 
+	color:#ffffff;
+    height: 40px;
+    line-height: 30px;
+    text-align: center;
+}
+
+
+tbody td:last-child, thead th:last-child {
+    border-right: none !important;
+}
+
+#leaderBody {
+	color: #446e9b;
+	border: 1px solid #446e9b;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	text-align: center;
+	min-height: 62px;
+	max-height: 328px;
+}
+
+#map {
+	height:778px;
+}
+/*        min-height: 100%;
+      }
+       Optional: Makes the sample page fill the window. 
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }*/
+
+
+#personal-scorecard {
+	margin-top: 8px;
+}
+
+#modifyScore {
+	padding-right:10px;
+}
+
+@media only screen and (min-width : 320px) {
+	table.scroll tbody td,
+	table.scroll thead th {
+    	width: 33%;
+    	float: left;
+	}
+	#totalScoreTitle {
+		padding: 3px 0px 3px 10px;
+	}
+
+	#localHeatMap {
+		min-height: 420px;
+	}
+
+	#map {
+	height:420px;
+	}
+
+	.mainContent {
+		min-height: 512px;
+	}
+
+	.topicLeft {
+		min-height:512px;
+	}
+}
+
+@media only screen and (min-width : 480px) {
+	table.scroll tbody td,
+	table.scroll thead th {
+    	width: 33%;
+    	float: left;
+	}
+	#totalScoreTitle {
+		padding: 12px 0px 12px 10px;
+	}
+
+	#localHeatMap {
+		min-height: 778px;
+	}
+
+	#map {
+	height:778px;
+	}
+
+	.mainContent {
+		min-height: 798px;
+	}
+}
+
+@media only screen and (min-width : 768px) {
+	table.scroll tbody td,
+	table.scroll thead th {
+    	width: 20%;
+    	float: left;
+	}
+	#totalScoreTitle {
+		padding: 12px 0px 12px 10px;
+	}
+};
+
+
