@@ -17,10 +17,11 @@ body {
 }
 
 nav {
-	height: 30px;
+	min-height: 60px;
 }
 
 .navbar {
+	min-height: 60px;
 	margin-bottom: 0px;
 }
 
@@ -58,8 +59,8 @@ nav {
 }
 
 #localTitle {
-	background-color: #39b54a;
-	border: 2px solid #39b54a;
+	background-color: #5cb85c;
+	border: 2px solid #5cb85c;
 	border-radius: 5px;
 	margin: 20px;
 	height: 62px;
@@ -81,7 +82,7 @@ nav {
 }
 
 #localHeatMap {
-	border: 2px solid #39b54a;
+	border: 2px solid #5cb85c;
 	border-radius: 5px;
 	margin: 20px;
 	min-height: 788px;
@@ -89,7 +90,7 @@ nav {
 }
 
 #scorecardPage {
-/*	border: 2px solid #39b54a;
+/*	border: 2px solid #5cb85c;
 	border-radius: 5px;*/	
 	/*margin: 20px;*/
 	min-height: 490px;
@@ -102,7 +103,7 @@ nav {
 
 .scorecardBlank tr td {
 	height:70px;
-	color: #39b54a;
+	color: #5cb85c;
 	font-family: 'Reenie Beanie', cursive;
 	font-size: 36px;
 	padding: 4px;
@@ -177,7 +178,7 @@ table.scroll thead th {
 }
 
 thead {
-	background-color: #39b54a;
+	background-color: #5cb85c;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px; 
 }
@@ -195,8 +196,8 @@ tbody td:last-child, thead th:last-child {
 }
 
 #openGames {
-	color: #39b54a;
-	border: 1px solid #39b54a;
+	color: #5cb85c;
+	border: 1px solid #5cb85c;
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
 	text-align: center;
@@ -238,7 +239,7 @@ tbody td:last-child, thead th:last-child {
 /*	border: 2px solid #5d85b1;
 	border-radius: 5px;*/
 	margin: 20px;
-	height: 200px;
+	height: 240 px;
 }
 
 #weatherTitle h4 {
@@ -276,7 +277,7 @@ tbody td:last-child, thead th:last-child {
 	margin: 20px;
 	min-height: 188px;
 	padding: 0;
-	color: #39b54a;
+	color: #5cb85c;
 }
 
 #moreInfo {
@@ -354,8 +355,8 @@ footer .navbar-nav {
 }
 
 #totalScoreTitle {
-	background-color: #39b54a;
-	border:2px solid #39b54a;
+	background-color: #5cb85c;
+	border:2px solid #5cb85c;
 	border-top-left-radius: 5px;
 	border-bottom-left-radius: 5px;
 	color: #ffffff;
@@ -372,10 +373,10 @@ footer .navbar-nav {
 }
 
 #totalScore {
-	border:2px solid #39b54a;
+	border:2px solid #5cb85c;
 	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
-	color: #39b54a;
+	color: #5cb85c;
 	font-family: 'Reenie Beanie', cursive;
 	font-size: 48px;
 	height:60px;
@@ -390,7 +391,7 @@ footer .navbar-nav {
 }
 
 #score {
-	color: #39b54a;
+	color: #5cb85c;
 	height: 345px;
 	width: 100%;
 	font-family: 'Reenie Beanie', cursive;
@@ -399,7 +400,7 @@ footer .navbar-nav {
 }
 
 .tourneyInfo {
-	color: #39b54a;
+	color: #5cb85c;
 	font-family: 'Reenie Beanie', cursive;
 	font-size: 2em;
 }
@@ -444,7 +445,7 @@ table.scrollLeader thead th {
 }
 
 thead {
-	background-color: #39b54a;
+	background-color: #5cb85c;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px; 
 }
@@ -462,8 +463,8 @@ tbody td:last-child, thead th:last-child {
 }
 
 #leaderBody {
-	color: #39b54a;
-	border: 1px solid #39b54a;
+	color: #5cb85c;
+	border: 1px solid #5cb85c;
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
 	text-align: center;

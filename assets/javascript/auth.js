@@ -15,6 +15,14 @@ $(function(){
       var playerId = 1;
       var gameId = 1;
 
+      var golfDatabase;
+
+      golfdb.ref().on('value', function(snapshot) {
+        golfDatabase = snapshot.val();
+        console.log('Golf Database: ', golfDatabase);
+      });
+
+
   // Global variables for Creating Account
   var userId = "";
   var email = "";

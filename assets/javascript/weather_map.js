@@ -64,7 +64,7 @@ function runAjax(){
         $("#temperature").text(Math.round(response.main.temp)+String.fromCharCode(176));
         
         //Add weather Icon to page
-        $("#weather-icon").html("<img src= " + wxIconPath + ">")
+        $("#weather-icon").html("<img src= " + wxIconPath + " height='60'>")
 
         //textual description of weather
         $("#weather-description").text(response.weather[0].main);
@@ -72,7 +72,7 @@ function runAjax(){
         $("#windspeed").text(Math.round(response.wind.speed) + "mph")
         
         //display wind direction arrow
-        $("#wind-direction").html("<img src= 'assets/images/windIndicator.png'>")
+        $("#wind-direction").html("<img src= 'assets/images/green_wind.png' height='60'>")
 
         //rotate arrow into the wind using 3rd party plugin
         $("#wind-direction").rotate(response.wind.deg);
