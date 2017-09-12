@@ -31,7 +31,7 @@ nav {
 }
 
 .navbar-brand {
-	font-size: 24px;
+	font-size: 22px;
   margin: 0px 10px;
   padding-top: 18px;
 }
@@ -108,14 +108,23 @@ nav {
 
 
 .scorecardBlank tr td {
-	height:70px;
+	background-color: #ffffff;
 	color: #5cb85c;
 	font-family: 'Reenie Beanie', cursive;
 	font-size: 36px;
+	height:70px;
 	padding: 4px;
+
+}
+
+.results>thead>tr>th {
+	background-color: navy;
+	border: 2px solid green;
+	padding:2px;
 }
 
 .results>tbody>tr>td {
+	border: 2px solid green;
 	padding:2px;
 }
 
@@ -130,12 +139,14 @@ nav {
 
 #scoreOut {
 	background-color: green;
+	border: 2px solid green;
 	padding: 4px;
 	width: 60px;
 }
 
 #scoreIn {
 	background-color: green;
+	border: 2px solid green;
 	padding: 14px 14px 4px 14px;
 	width: 60px;
 }
@@ -379,6 +390,7 @@ footer .navbar-nav {
 }
 
 #totalScore {
+	background-color: #ffffff;
 	border:2px solid #5cb85c;
 	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
@@ -398,7 +410,7 @@ footer .navbar-nav {
 
 #score {
 	color: #5cb85c;
-	height: 345px;
+	height: 325px;
 	width: 100%;
 	font-family: 'Reenie Beanie', cursive;
 	font-size: 20em;
@@ -534,6 +546,12 @@ div b {
 	}
 	.sidebar {
 		min-height:420;	
+	}
+
+	.navbar-brand {
+		font-size: 22px;
+	  margin: 0px 10px 0px 0px;
+	  padding: 18px 5px 10px 5px;
 	}
 }
 
