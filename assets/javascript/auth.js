@@ -1,12 +1,12 @@
 $(function(){
   // Initialize Firebase
   var config = {
-    apiKey: "AIzaSyAbJX4QcF-KzWZrahes6M3iKgDBI_Jg6os",
-    authDomain: "golf-tourny-scoring.firebaseapp.com",
-    databaseURL: "https://golf-tourny-scoring.firebaseio.com",
-    projectId: "golf-tourny-scoring",
-    storageBucket: "golf-tourny-scoring.appspot.com",
-    messagingSenderId: "110343822868"
+    apiKey: "AIzaSyBoJXNP_jTgPqa3kO3sLC-UEi0gFQM9wso",
+    authDomain: "gts-v2.firebaseapp.com",
+    databaseURL: "https://gts-v2.firebaseio.com",
+    projectId: "gts-v2",
+    storageBucket: "",
+    messagingSenderId: "449499109655"
   };
   firebase.initializeApp(config);
 
@@ -404,6 +404,7 @@ function sendChatMessage() {
     $('#messages').append(`<p><b>${message.name}:</b> ${message.message}</p>`);
     $('#chatMessage').val("");
     
+//  Auto Scroll to Bottom on Chat
     var height = 0;
     $('#messages p').each(function(i, value){
       height += parseInt($(this).height())+20;
@@ -414,9 +415,54 @@ function sendChatMessage() {
     $('#messages').animate({scrollTop: height},0);
 
   });
-//  Auto Scroll to Bottom on Chat - Not Currently working
-    // var chatAutoScroll = $('#messages');
-    // chatAutoScroll.scrollIntoView();
+
+  /**************************************************************
+In Game Chat logic  -- Scorecard & Leaderboard fpr Current Game
+*****************************************************************/     
+
+var gamechatdb = firebase.database().ref(`/games/${gameKey}/chat`);
+
+function sendGameChatMessage() {
+  messageField = $('#gameChatMessage').val().trim();
+  console.log('Message: ', messageField);
+
+    if(messageField != "") {
+      gamechatdb.push().set({
+        name:firebase.auth().currentUser.displayName,
+        message: messageField,
+        dateAdded: firebase.database.ServerValue.TIMESTAMP
+      });
+    }  
+}
+  
+  $('#gameMessageSubmit').click(function() {
+    sendGameChatMessage();
+    updateScroll();
+  });
+
+  $('#gameChatMessage').keypress(function(e) {
+      if(e.which == 13) {
+        sendGameChatMessage();
+      }
+  });  
+
+  gamechatdb.orderByChild("dateAdded").on('child_added', function(snapshot){
+    var message = snapshot.val();
+    $('#gameMessages').append(`<p><b>${message.name}:</b> ${message.message}</p>`);
+    $('#gameChatMessage').val("");
+    
+//  Auto Scroll to Bottom on Chat
+    var height = 0;
+    $('#gameMessages p').each(function(i, value){
+      height += parseInt($(this).height())+20;
+    });
+
+    height += 200;
+
+    $('#gameMessages').animate({scrollTop: height},0);
+
+  });
+
 
 
 /****************************************
