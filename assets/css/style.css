@@ -54,11 +54,17 @@ nav {
 
 .row > div {
 	padding: 0px;
-/*	min-height: 798px;*/
+	/*height: 828px;*/
 
 }
 
 .mainContent {
+/*	border: 2px solid #5d85b1;
+	border-radius: 5px;*/
+	min-height: 798px;
+}
+
+.mainContentLeaderboard {
 /*	border: 2px solid #5d85b1;
 	border-radius: 5px;*/
 	min-height: 798px;
@@ -109,7 +115,7 @@ nav {
 
 .scorecardBlank tr td {
 	background-color: #ffffff;
-	color: #5cb85c;
+	color: gray;
 	font-family: 'Reenie Beanie', cursive;
 	font-size: 36px;
 	height:70px;
@@ -186,12 +192,18 @@ table.scroll tbody {
     max-height: 328px;
     overflow-y: auto;
     overflow-x: hidden;
+    background-color: #ffffff;
+    
+}
+
+.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: lightgray;
 }
 
 table.scroll tbody td,
 table.scroll thead th {
     width: 20%;
-    float: left;
+    float: left;   
 }
 
 thead {
@@ -213,13 +225,17 @@ tbody td:last-child, thead th:last-child {
 }
 
 #openGames {
-	color: #5cb85c;
+	color: #2b3e50;
 	border: 1px solid #5cb85c;
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
 	text-align: center;
 	min-height: 62px;
 	max-height: 328px;
+}
+
+#openGames tr td {
+	font-size: 16px;
 }
 
 .sidebarHome {
@@ -283,8 +299,33 @@ tbody td:last-child, thead th:last-child {
 }
 
 #messages {
+	background-color: #ffffff;
 	max-height: 240px;
 	overflow-y: auto;
+}
+
+#messages p {
+	color: #353231;
+	padding: 5px;
+}
+
+#messages p b {
+	color: gray;
+}
+
+#gameMessages {
+	background-color: #ffffff;
+	max-height: 240px;
+	overflow-y: auto;
+}
+
+#gameMessages p {
+	color: #353231;
+	padding: 5px;
+}
+
+#gameMessages p b {
+	color: gray;
 }
 
 
@@ -394,7 +435,7 @@ footer .navbar-nav {
 	border:2px solid #5cb85c;
 	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
-	color: #5cb85c;
+	color: gray;
 	font-family: 'Reenie Beanie', cursive;
 	font-size: 48px;
 	height:60px;
@@ -409,7 +450,7 @@ footer .navbar-nav {
 }
 
 #score {
-	color: #5cb85c;
+	color: gray;
 	height: 325px;
 	width: 100%;
 	font-family: 'Reenie Beanie', cursive;
@@ -441,6 +482,7 @@ table.scrollLeader thead tr {
     width: 97%;
     /* minus scroll bar width */
     width: calc(100%-16px);
+
 }
 
 table.scrollLeader tr:after {
@@ -454,6 +496,12 @@ table.scrollLeader tbody {
     max-height: 328px;
     overflow-y: auto;
     overflow-x: hidden;
+    background-color: #ffffff;
+    color: gray;
+}
+
+.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: lightgray;
 }
 
 table.scrollLeader tbody td,
@@ -466,6 +514,7 @@ thead {
 	background-color: #5cb85c;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px; 
+	/*height: 40px;*/
 }
 
 thead tr th { 
@@ -533,10 +582,6 @@ div b {
 	height:420px;
 	}
 
-	.mainContent {
-		min-height: 420px;
-	}
-
 	.topicLeft {
 		min-height:420;
 	}
@@ -544,6 +589,15 @@ div b {
 	.topicRight {
 		min-height:420;	
 	}
+
+	.mainContent {
+		min-height: 420px;
+	}
+
+	.mainContentLeaderboard {
+		min-height: 420px;
+	}
+
 	.sidebar {
 		min-height:420;	
 	}
@@ -553,6 +607,10 @@ div b {
 	  margin: 0px 10px 0px 0px;
 	  padding: 18px 5px 10px 5px;
 	}
+
+	#openGames tr td {
+	font-size: 12px;
+
 }
 
 @media only screen and (min-width : 480px) {
