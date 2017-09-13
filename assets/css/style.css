@@ -33,7 +33,7 @@ nav {
 .navbar-brand {
 	font-size: 22px;
   margin: 0px 10px;
-  padding-top: 18px;
+  padding: 5px;
 }
 
 #createUser input {
@@ -61,13 +61,13 @@ nav {
 .mainContent {
 /*	border: 2px solid #5d85b1;
 	border-radius: 5px;*/
-	min-height: 798px;
+	min-height: 808px;
 }
 
 .mainContentLeaderboard {
 /*	border: 2px solid #5d85b1;
 	border-radius: 5px;*/
-	min-height: 798px;
+	min-height: 808px;
 }
 
 #localTitle {
@@ -75,7 +75,7 @@ nav {
 	border: 2px solid #5cb85c;
 	border-radius: 5px;
 	margin: 20px 15px;
-	height: 62px;
+	min-height: 62px;
 
 	display: flex;              /* establish flex container */
     flex-direction: column;     /* stack flex items vertically */
@@ -127,6 +127,10 @@ nav {
 	background-color: navy;
 	border: 2px solid green;
 	padding:2px;
+	height: 20px;
+	line-height: 40px;
+	font-size: 14px;
+	text-align: center;
 }
 
 .results>tbody>tr>td {
@@ -212,11 +216,12 @@ thead {
 	border-top-right-radius: 5px; 
 }
 
-thead tr th { 
+table.scroll thead tr th { 
 	color:#ffffff;
-    min-height: 60px;
+    /*min-height: 60px;*/
     line-height: 30px;
     text-align: center;
+    font-size: 14px;
 }
 
 
@@ -287,6 +292,10 @@ tbody td:last-child, thead th:last-child {
 	min-height: 144px;
 }
 
+#weather-modal .modal-header {
+	background-color: #d9534f;
+}
+
 #chat {
 /*	border: 2px solid #5d85b1;
 	border-radius: 5px;*/
@@ -295,12 +304,12 @@ tbody td:last-child, thead th:last-child {
 }
 
 #chatBody {
-	max-height: 274px;
+	max-height: 310px;
 }
 
 #messages {
 	background-color: #ffffff;
-	max-height: 240px;
+	max-height: 280px;
 	overflow-y: auto;
 }
 
@@ -451,17 +460,26 @@ footer .navbar-nav {
 
 #score {
 	color: gray;
-	height: 325px;
+	height: 356px;
 	width: 100%;
 	font-family: 'Reenie Beanie', cursive;
 	font-size: 20em;
 	text-align: center;
 }
 
+.tourneyDetailNames {
+	font-size: 16px;
+	color: #2b3e50;
+}
+
+#tourneyDetail {
+	background-color: #ffffff;
+}
+
 .tourneyInfo {
 	color: #5cb85c;
 	font-family: 'Reenie Beanie', cursive;
-	font-size: 2em;
+	font-size: 24px;
 }
 
 /*Creating Scrollable Table*/
@@ -517,9 +535,9 @@ thead {
 	/*height: 40px;*/
 }
 
-thead tr th { 
+table.scrollLeader thead tr th { 
 	color:#ffffff;
-    height: 40px;
+	font-size: 18px;
     line-height: 30px;
     text-align: center;
 }
@@ -530,7 +548,7 @@ tbody td:last-child, thead th:last-child {
 }
 
 #leaderBody {
-	color: #5cb85c;
+	color: #2b3e50;
 	border: 1px solid #5cb85c;
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
@@ -603,9 +621,9 @@ div b {
 	}
 
 	.navbar-brand {
-		font-size: 22px;
+		font-size: 20px;
 	  margin: 0px 10px 0px 0px;
-	  padding: 18px 5px 10px 5px;
+	  padding: 5px;
 	}
 
 	#openGames tr td {
@@ -644,6 +662,14 @@ div b {
 	}
 	#totalScoreTitle {
 		padding: 12px 0px 12px 10px;
+	}
+
+	.mainContent {
+		min-height: 808px;
+	}
+
+	.mainContentLeaderboard {
+		min-height: 808px;
 	}
 };
 
