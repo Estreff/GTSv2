@@ -344,10 +344,9 @@ join-game logic
     });
 
     // Exit button on scorecard
+
     $('#exitGame').click(function() {
-
       $('#exit-modal').show();
-
     });
 
     // Exit button on modal
