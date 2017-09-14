@@ -35,6 +35,7 @@ $(function(){
   var joinedGame = "";
   var gamesPlayed = [""];  
 
+
   // Get the Player ID from Firebase
       golfdb.ref('playerCount').on('value', function(snapshot){
         playerId = snapshot.val().playerId;
@@ -96,6 +97,19 @@ $(function(){
         $('#createError').text('Display Name Required').removeClass('hide');
         console.log('Display Name needed');
       } else {
+          console.log('Display Name Check: ', displayName);
+
+          golfdb.ref('users').on('value', function(snapshot){
+            verifyDisplayName = snapshot.val();
+            console.log('Check to verify Display Name(DB Check): ', verifyDisplayName);
+          });
+
+          // for(var i = 0; i < golfdb.ref('/users)'); i++) {
+          //   console.log(golfdb.ref('/users)')[i]);
+            // if(displayName == golfdb.ref('/users')[i]) {
+            //   $('#createError').text('Display Already Exists').removeClass('hide');
+            // } else {
+          
       // Inserts Email and Password into Autentiation function
       firebase.auth().createUserWithEmailAndPassword(email, loginPswd)
         .then(function(user) {
@@ -143,12 +157,20 @@ $(function(){
             $('#createError').text(errorMessage).removeClass('hide');
             console.log(error);
         });
-      }
+      // }
+      // }
+    }
     });
 
     // Cancel Button on Create Account 
       $('#createCancel').click(function() {
         $('#createError').text("").addClass('hide');
+        // Clear Input fields
+          $('#displayName-input').val("");
+          $('#email-input').val("");
+          $('#fName-input').val("");
+          $('#lName-input').val("");
+          $('#password-input').val("");
       });
 
     // LogOut of Firebase
@@ -199,6 +221,7 @@ $(function(){
         $('#games').addClass('hide');
         $('#player').addClass('hide');
         $('#chat').addClass('hide');
+
       }
   
     // Add a realtime listener
@@ -211,6 +234,7 @@ $(function(){
         console.log('User UID: ', firebaseUser.uid);      
       } else {
         loggedOut();
+
       }
     });
 
@@ -256,9 +280,11 @@ $(function(){
 
     $('#createGame').click(function() {
       createGame();
+      loadGames();
     })
 
     function loadGames() {
+        $('#openGames').html("");
       gamedb.on('child_added', function(snapshot){
           var user = firebase.auth().currentUser;
           console.log('User Information:', user)
@@ -270,7 +296,7 @@ $(function(){
           var userCell = $('<td class="hidden-xs">' + gameDetail.creator.user + '</td>');
           var joinTableCell = $('<td>');
           var delTableCell = $('<td class="hidden-xs">')
-          // var joinButton = $('<button class="openGame btn btn-primary">' + 'Game ' + gameDetail.gameId + '</button>');
+          var joinButton = $('<button class="openGame btn <button></button>-primary">' + 'Game ' + gameDetail.gameId + '</button>');
           var joinButton = $('<button class="openGame btn btn-primary">Join</button>');
           var deleteButton = $('<button class="delete btn btn-danger">' + 'X' + '</button>');
             joinButton.attr('data-value', `Game${gameDetail.gameId}`);
@@ -378,7 +404,6 @@ Delete Game from Open List and Firebase logic
       var deleteGame = $(this).attr('data-value');     
       var findGameID = firebase.database().ref(`games`);
       findGameID.child(deleteGame).remove();
-      $('#openGames').html("");
       loadGames();      
     });
 
@@ -771,11 +796,8 @@ scorecard logic
       }
   });
 
-
-
   golfdb.ref('/games/' + gameKey).on('value', function(snap) {
-    
-    
+        
     $('#tourneyName').text(snap.val().gameName);
     $('#courseName').text(snap.val().courseName);
     $('#createdBy').text(snap.val().creator.user);
@@ -787,14 +809,14 @@ scorecard logic
   *****************************************/
 
   // adding player to leaderboard as soon as they join the game. it is also updating their hole and score...i think
-  golfdb.ref('/games/' + gameKey + '/players').on('child_added', function(snap) {
-    
-    var holeScores = [snap.val().holeOne, snap.val().holeTwo, snap.val().holeThree, snap.val().holeFour, snap.val().holeFive, snap.val().holeSix, snap.val().holeSeven, snap.val().holeEight, snap.val().holeNine, snap.val().holeTen, snap.val().holeEleven, snap.val().holeTwelve, snap.val().holeThirteen, snap.val().holeFourteen, snap.val().holeFifteen, snap.val().holeSixteen, snap.val().holeSeventeen, snap.val().holeEighteen]
-    
-    var total = 0;
-    
-    for (var i = 0; i < holeScores.length; i++) {
-      total += holeScores[i];
+    golfdb.ref('/games/' + gameKey + '/players').on('child_added', function(snap) {
+      
+      var holeScores = [snap.val().holeOne, snap.val().holeTwo, snap.val().holeThree, snap.val().holeFour, snap.val().holeFive, snap.val().holeSix, snap.val().holeSeven, snap.val().holeEight, snap.val().holeNine, snap.val().holeTen, snap.val().holeEleven, snap.val().holeTwelve, snap.val().holeThirteen, snap.val().holeFourteen, snap.val().holeFifteen, snap.val().holeSixteen, snap.val().holeSeventeen, snap.val().holeEighteen]
+      
+      var total = 0;
+      
+      for (var i = 0; i < holeScores.length; i++) {
+        total += holeScores[i];
     }
 
     var newPlayer = snap.val().name
@@ -803,19 +825,15 @@ scorecard logic
     var tableRow = $('<tr>');
     score.text(total);
     thru.text(snap.val().holeNumber - 1);
-    
-    
+       
     $('#leaderBody').append(tableRow);
-    tableRow.append('<td>' + newPlayer);
-    tableRow.append(score);
-    tableRow.append(thru);
-
-
-  });
+      tableRow.append('<td>' + newPlayer);
+      tableRow.append(score);
+      tableRow.append(thru);
+    });
 
   // Scorecard Plus and Minus for easier Mobile use
   // Bootstrap 3.1.0 Snippet by davidsantanacosta
-
 
   $('.btn-number').click(function(e){
         e.preventDefault();
@@ -844,7 +862,6 @@ scorecard logic
                 if(parseInt(input.val()) == input.attr('max')) {
                     $(this).attr('disabled', true);
                 }
-
             }
         } else {
             input.val(1);
@@ -873,5 +890,3 @@ scorecard logic
     });
 
 });
-
-
