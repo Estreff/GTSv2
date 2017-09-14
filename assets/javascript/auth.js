@@ -97,12 +97,14 @@ $(function(){
         $('#createError').text('Display Name Required').removeClass('hide');
         console.log('Display Name needed');
       } else {
-          console.log('Display Name Check: ', displayName);
+        // Check to verify Display Name doesn't Exist
 
-          golfdb.ref('users').on('value', function(snapshot){
-            verifyDisplayName = snapshot.val();
-            console.log('Check to verify Display Name(DB Check): ', verifyDisplayName);
-          });
+          // console.log('Display Name Check: ', displayName);
+
+          // golfdb.ref('users').on('value', function(snapshot){
+          //   verifyDisplayName = snapshot.val();
+          //   console.log('Check to verify Display Name(DB Check): ', verifyDisplayName);
+          // });
 
           // for(var i = 0; i < golfdb.ref('/users)'); i++) {
           //   console.log(golfdb.ref('/users)')[i]);
