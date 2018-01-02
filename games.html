@@ -18,6 +18,36 @@
 	<script src="https://cdn.firebase.com/libs/firebaseui/2.3.0/firebaseui.js"></script>
 	<!-- Firebase CSS -->
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.3.0/firebaseui.css" />
+	
+<!-- Elementinve Google Analytics -->
+	<style>.async-hide { opacity: 0 !important} </style>
+	<script>(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
+	h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
+	(a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
+	})(window,document.documentElement,'async-hide','dataLayer',4000,
+	{'GTM-WZ2628H':true});</script>
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-58062675-3', 'auto');
+	  ga('require', 'GTM-WZ2628H');
+	  ga('send', 'pageview');
+
+	</script>
+	<!-- Hotjar Tracking Code for demoproduct.zagity.net -->
+	<script>
+	    (function(h,o,t,j,a,r){
+		h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+		h._hjSettings={hjid:556672,hjsv:5};
+		a=o.getElementsByTagName('head')[0];
+		r=o.createElement('script');r.async=1;
+		r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+		a.appendChild(r);
+	    })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+	</script>	
 </head>
 
 <body>
@@ -191,4 +221,170 @@
   	<script type="text/javascript" src="assets/javascript/auth.js"></script>
   	<!-- Weather Local Javascript -->
   	<script type="text/javascript" src="assets/javascript/weather_map.js"></script>
+	
+<!-- Elementive Google Analytics -->
+	<script>
+	$(function(){
+		$("form").submit(function (e) {
+			var formId = this.id
+			var submitFormId = "#"+formId;
+			var formFields = [];
+		$(submitFormId).find('input, select, textarea').each(function(key){
+		    if($(this).val() != '') {
+					formFields.push(jQuery(this).attr("name"));
+				}
+		});
+			// setup event
+			var evCat = 'Form Submission';
+			var evAction = formId;
+			var evLabel = '';
+			var evValue = formFields.length;
+			if(evValue > 0){  
+				evLabel = formFields.toString();
+				evLabel = evLabel.replace(",", "|");
+			} else {
+				evLabel = 'No fields submitted.';
+			}
+
+			// send to ga 
+			ga("send","event", evCat, evAction, evLabel, evValue);
+
+		});
+	});
+
+	/* UX Events 
+	Matthew Edgar, Elementive
+	www.elementive.com
+
+	Events Triggered:
+	--Scroll Recap
+	--Time Recap
+	--Key Element Activity
+	--Post Click Activity
+
+	Reading Reports:
+	-- Scroll Recap - active time | total time | max scroll % | time to reach max scroll | scroll % at exit
+	-- Time Recap - active time | total time
+	-- Key Element Activity: key element | scroll to time | scroll beyond time | clicks on key element | active time on page to use for comparison
+	-- Post Click Activity - active time | total time | previous page
+
+	*/
+	var keyElementIDs = ["keypara","cta"]; // which ids do you want tracked, this can be tracked page by page
+	var keyElementOptions = { // could be page by page or sitewide
+		withinDistance: 250, // people have to scroll this much beyond the element before it tracks (prevents it from tracking when an item appears just at the bottom of the screen)
+		minSecondsSeen: 5 // people have to view the key element at least this many seconds before the event triggers (set to 0 if you are okay with tracking people who just scroll right by it)
+	};
+	function UXEventsCheckVisible(e,t,n){t=t||0,n=n||"visible";var l=e.getBoundingClientRect(),i=Math.max(document.documentElement.clientHeight,window.innerHeight),o=l.bottom-t<0,c=l.top-i+t>=0;return"above"===n?o:"below"===n?c:!o&&!c}function UXEventsVisitorTimer(){UXEventsPageState()&&(activeTime+=1),totalTime+=1}function UXEventsGetScrollPercent(){var e=document.documentElement,t=document.body,n="scrollTop",l="scrollHeight";return((e[n]||t[n])/((e[l]||t[l])-e.clientHeight)*100).toFixed(2)}var activeTime=0,totalTime=0,maxScrollY=0,maxScrollYpercent=0,maxScrollYtime=0,scrollRecapEventSent=!1,keyElementSent=[],keyElementScrollTime=[],keyElementClicks=[],userScrolled=!1,prevPageEventSent=!1,UXEventsPageState=function(){var e,t,n={hidden:"visibilitychange",webkitHidden:"webkitvisibilitychange",mozHidden:"mozvisibilitychange",msHidden:"msvisibilitychange"};for(e in n)if(e in document){t=n[e];break}return function(n){return n&&document.addEventListener(t,n),!document[e]}}();window.onscroll=function(e){if(userScrolled=!0,window.scrollY>maxScrollY&&(maxScrollY=window.scrollY,maxScrollYpercent=UXEventsGetScrollPercent(),maxScrollYtime=activeTime),keyElementIDs.length>0)for(var t=0;t<keyElementIDs.length;t++){var n=document.getElementById(keyElementIDs[t]);if(void 0===keyElementScrollTime[t]&&(keyElementScrollTime[t]=[],keyElementScrollTime[t].to=0,keyElementScrollTime[t].below=0),void 0!==n&&null!=n){var l=UXEventsCheckVisible(n,keyElementOptions.withinDistance,"above"),i=UXEventsCheckVisible(n,keyElementOptions.withinDistance,"below");l||i||0!=keyElementScrollTime[t].to||(keyElementScrollTime[t].to=activeTime),l&&0==keyElementScrollTime[t].below&&(keyElementScrollTime[t].below=activeTime)}}},window.onunload=window.onbeforeunload=function(e){var t=document.cookie.replace(/(?:(?:^|.*;\s*)prevPage\s*\=\s*([^;]*).*$)|^.*$/,"$1");if(""!=t&&(document.cookie="prevPage=; expires=Thu, 01 Jan 1970 00:00:00 GMT",""!=t&&(prevPageEventSent||(ga("send","event","User Experience","Post Click Activity",activeTime+"|"+totalTime+"|"+t,{nonInteraction:true}),prevPageEventSent=!0))),document.cookie="prevPage="+window.location.href,scrollRecapEventSent||(ga("send","event","User Experience","Time Recap",activeTime+"|"+totalTime,{nonInteraction:true}),ga("send","event","User Experience","Scroll Recap",activeTime+"|"+totalTime+"|"+maxScrollYpercent+"|"+maxScrollYtime+"|"+UXEventsGetScrollPercent(),{nonInteraction:true}),scrollRecapEventSent=!0),userScrolled)for(var n=0;n<keyElementIDs.length;n++)keyElementSent.indexOf(n)<0&&keyElementScrollTime[n].to>0&&(0==keyElementScrollTime[n].below&&(keyElementScrollTime[n].below=activeTime),void 0===keyElementClicks[n]&&(keyElementClicks[n]=0),ga("send","event","User Experience","Key Element Activity",keyElementIDs[n]+"|"+keyElementScrollTime[n].to+"|"+keyElementScrollTime[n].below+"|"+keyElementClicks[n]+"|"+activeTime,{nonInteraction: true}),keyElementSent.push(n))},document.body.addEventListener("click",function(e){for(var t=0;t<keyElementIDs.length;t++){var n=document.getElementById(keyElementIDs[t]);void 0!==n&&null!=n&&document.querySelector("#"+keyElementIDs[t]).contains(e.target)&&(void 0===keyElementClicks[t]&&(keyElementClicks[t]=0),keyElementClicks[t]++)}}),window.setInterval(UXEventsVisitorTimer,1000);
+
+	// From: http://jsfiddle.net/aschottmuller/38kqp83b/
+	// Purpose: Upon click action, dynamically track events for: jump-to bookmarks/tabs, file downloads, mailto:, tel: click-to-call, and external domain links.
+	function _gaLt(event){
+		var el = event.srcElement || event.target;
+
+		/* Loop up the tree through parent elements if clicked element is not a link (eg: an image inside a link) */
+		while(el && (typeof el.tagName == 'undefined' || el.tagName.toLowerCase() != 'a' || !el.href))
+			el = el.parentNode;
+
+		var track = false;
+		var evCat = "";
+		var evAction = "";
+		var evLabel = "";
+		var filetypes = /.(avi|doc.*|dmg|exe|flv|mov|mp3|pdf|ppt.*|rar|txt|wav|wma|wmv|xls.*|xlt.*|zip)$/i;
+
+		if(el && el.href){
+
+			// get url for external
+			var clickedLink = el.href;
+			var clickedLink_split = clickedLink.split("?");
+			var clickedLink_noQuery = clickedLink_split[0];
+
+			if(el.hash !=="" && el.href.indexOf(location.host) != -1){ /* jump-to bookmark anchor for internal link */
+				evCat = "Interact";
+				// NOTE: Ensure all clickable page elements have ID attributes for this to work properly
+				evAction = "Jump to " + el.hash;
+				if(el.id) { evAction = evAction + " from #" + el.id;}
+				evLabel = "Page: " + document.location.pathname.toLowerCase() + "; Text: " + el.innerHTML;
+				track = true;
+
+			} else if(el.href.match(filetypes)){ /* file download */
+				/* REVISIT: Determine if file downloads on the same server should be tracked as virtual page views, events, or both. */
+				var extension = el.href.substr( (el.href.lastIndexOf('.') +1) );
+				evCat = "Download";
+				evAction = "Download-" + extension.toUpperCase();
+				evLabel = "File: " + el.href.toLowerCase() + "; Page: " + document.location.pathname.toLowerCase();
+				track = true;
+			} else if(el.href.match(/^mailto:/i) ){ /* mailto: */
+				evCat = "Contact";
+				evAction = "Email Click";
+				evLabel = el.href + "; Page: " + document.location.pathname.toLowerCase();
+				track = true;
+			} else if(el.href.match(/^tel:/i) ){ /* tel: click-to-call */
+				evCat = "Contact";
+				evAction = "Click-to-Call";
+				evLabel = el.href + "; Page: " + document.location.pathname.toLowerCase();
+				track = true;
+		} else if(clickedLink_noQuery.indexOf(location.host) == -1){ /* external link */
+				evCat = "Outgoing Links";
+				evAction = el.href;
+				evLabel = "Page: " + document.location.pathname.toLowerCase() + "; Text: " + el.innerHTML;
+				track = true;
+			/* internal link */
+			} else if(el.href.indexOf(location.host) > 0){ 
+				evCat = "Internal Links";
+				evAction = el.href;
+				evLabel = "Page: " + document.location.pathname.toLowerCase() + "; Text: " + el.innerHTML;
+				track = true;
+
+			}  
+
+			// get click time (active time) - requires use of UX Events
+			evLabel += "; Click Time: " + activeTime;		
+
+			// get css to know which element people click on
+			var parentEls = $( el ).parents()
+			  .map(function() {
+				if (this.tagName.toLowerCase() != 'body' && this.tagName.toLowerCase() != 'html') {
+				  if (this.className) {
+					return this.tagName + '.' + this.className;
+				  } else {
+					return this.tagName;
+				  }
+				}
+			  })
+			  .get()
+			  .join( "," );
+			  evLabel += "; CSS: " + parentEls;
+
+			// track stuff
+			if (track) {
+				// Log the event
+				ga("send", "event", evCat, evAction, evLabel);
+				/* if target not set then delay opening of window by 0.5s to allow tracking */
+				if(!el.target || el.target.match(/^_(self|parent|top)$/i)){
+					setTimeout(function(){
+						document.location.href = el.href;
+					}.bind(el),500);
+					/* Prevent standard click */
+					event.preventDefault ? event.preventDefault() : event.returnValue = !1;
+				}
+			}
+		}
+	}
+	/* Attach the event to all clicks in the document after page has loaded */
+	var w = window;
+	w.addEventListener ? w.addEventListener("load",function(){document.body.addEventListener("click",_gaLt,!1)},!1)
+	  : w.attachEvent && w.attachEvent("onload",function(){document.body.attachEvent("onclick",_gaLt)});
+	// END: DYNAMIC CLICK EVENT TRACKING
+
+	/*!
+	 * @preserve
+	 * jquery.scrolldepth.js | v1.0
+	 * Copyright (c) 2016 Rob Flaherty (@robflaherty)
+	 * Licensed under the MIT and GPL licenses.
+	 */
+	!function(e){"function"==typeof define&&define.amd?define(["jquery"],e):"object"==typeof module&&module.exports?module.exports=e(require("jquery")):e(jQuery)}(function(e){"use strict";var n,t,r,o,i={minHeight:0,elements:[],percentage:!0,userTiming:!0,pixelDepth:!0,nonInteraction:!0,gaGlobal:!1,gtmOverride:!1,trackerName:!1,dataLayer:"dataLayer"},a=e(window),l=[],c=!1,u=0;return e.scrollDepth=function(p){function s(e,i,a,l){var c=p.trackerName?p.trackerName+".send":"send";o?(o({event:"ScrollDistance",eventCategory:"Scroll Depth",eventAction:e,eventLabel:i,eventValue:1,eventNonInteraction:p.nonInteraction}),p.pixelDepth&&arguments.length>2&&a>u&&(u=a,o({event:"ScrollDistance",eventCategory:"Scroll Depth",eventAction:"Pixel Depth",eventLabel:d(a),eventValue:1,eventNonInteraction:p.nonInteraction})),p.userTiming&&arguments.length>3&&o({event:"ScrollTiming",eventCategory:"Scroll Depth",eventAction:e,eventLabel:i,eventTiming:l})):(n&&(window[r](c,"event","Scroll Depth",e,i,1,{nonInteraction:p.nonInteraction}),p.pixelDepth&&arguments.length>2&&a>u&&(u=a,window[r](c,"event","Scroll Depth","Pixel Depth",d(a),1,{nonInteraction:p.nonInteraction})),p.userTiming&&arguments.length>3&&window[r](c,"timing","Scroll Depth",e,l,i)),t&&(_gaq.push(["_trackEvent","Scroll Depth",e,i,1,p.nonInteraction]),p.pixelDepth&&arguments.length>2&&a>u&&(u=a,_gaq.push(["_trackEvent","Scroll Depth","Pixel Depth",d(a),1,p.nonInteraction])),p.userTiming&&arguments.length>3&&_gaq.push(["_trackTiming","Scroll Depth",e,l,i,100])))}function h(e){return{"25%":parseInt(.25*e,10),"50%":parseInt(.5*e,10),"75%":parseInt(.75*e,10),"100%":e-5}}function g(n,t,r){e.each(n,function(n,o){-1===e.inArray(n,l)&&t>=o&&(s("Percentage",n,t,r),l.push(n))})}function f(n,t,r){e.each(n,function(n,o){-1===e.inArray(o,l)&&e(o).length&&t>=e(o).offset().top&&(s("Elements",o,t,r),l.push(o))})}function d(e){return(250*Math.floor(e/250)).toString()}function m(){y()}function v(e,n){var t,r,o,i=null,a=0,l=function(){a=new Date,i=null,o=e.apply(t,r)};return function(){var c=new Date;a||(a=c);var u=n-(c-a);return t=this,r=arguments,0>=u?(clearTimeout(i),i=null,a=c,o=e.apply(t,r)):i||(i=setTimeout(l,u)),o}}function y(){c=!0,a.on("scroll.scrollDepth",v(function(){var n=e(document).height(),t=window.innerHeight?window.innerHeight:a.height(),r=a.scrollTop()+t,o=h(n),i=+new Date-D;return l.length>=p.elements.length+(p.percentage?4:0)?(a.off("scroll.scrollDepth"),void(c=!1)):(p.elements&&f(p.elements,r,i),void(p.percentage&&g(o,r,i)))},500))}var D=+new Date;p=e.extend({},i,p),e(document).height()<p.minHeight||(p.gaGlobal?(n=!0,r=p.gaGlobal):"function"==typeof ga?(n=!0,r="ga"):"function"==typeof __gaTracker&&(n=!0,r="__gaTracker"),"undefined"!=typeof _gaq&&"function"==typeof _gaq.push&&(t=!0),"function"==typeof p.eventHandler?o=p.eventHandler:"undefined"==typeof window[p.dataLayer]||"function"!=typeof window[p.dataLayer].push||p.gtmOverride||(o=function(e){window[p.dataLayer].push(e)}),e.scrollDepth.reset=function(){l=[],u=0,a.off("scroll.scrollDepth"),y()},e.scrollDepth.addElements=function(n){"undefined"!=typeof n&&e.isArray(n)&&(e.merge(p.elements,n),c||y())},e.scrollDepth.removeElements=function(n){"undefined"!=typeof n&&e.isArray(n)&&e.each(n,function(n,t){var r=e.inArray(t,p.elements),o=e.inArray(t,l);-1!=r&&p.elements.splice(r,1),-1!=o&&l.splice(o,1)})},m())},e.scrollDepth});
+	jQuery(function() {
+	  jQuery.scrollDepth();
+	});
+	</script>
 </body>
